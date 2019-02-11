@@ -5,22 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : knetwalk
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/knetwalk-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/knetwalk-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/knetwalk-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/knetwalk-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/knetwalk-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/knetwalk-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: knetwalk-bin
-Requires: knetwalk-data
-Requires: knetwalk-license
-Requires: knetwalk-locales
+Requires: knetwalk-bin = %{version}-%{release}
+Requires: knetwalk-data = %{version}-%{release}
+Requires: knetwalk-license = %{version}-%{release}
+Requires: knetwalk-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkdegames-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -28,8 +28,8 @@ No detailed description available
 %package bin
 Summary: bin components for the knetwalk package.
 Group: Binaries
-Requires: knetwalk-data
-Requires: knetwalk-license
+Requires: knetwalk-data = %{version}-%{release}
+Requires: knetwalk-license = %{version}-%{release}
 
 %description bin
 bin components for the knetwalk package.
@@ -68,26 +68,26 @@ locales components for the knetwalk package.
 
 
 %prep
-%setup -q -n knetwalk-18.08.0
+%setup -q -n knetwalk-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535232009
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549871455
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535232009
+export SOURCE_DATE_EPOCH=1549871455
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/knetwalk
-cp COPYING %{buildroot}/usr/share/doc/knetwalk/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/knetwalk/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/knetwalk
+cp COPYING %{buildroot}/usr/share/package-licenses/knetwalk/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/knetwalk/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -160,9 +160,9 @@ popd
 /usr/share/doc/HTML/uk/knetwalk/index.docbook
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/knetwalk/COPYING
-/usr/share/doc/knetwalk/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/knetwalk/COPYING
+/usr/share/package-licenses/knetwalk/COPYING.DOC
 
 %files locales -f knetwalk.lang
 %defattr(-,root,root,-)
