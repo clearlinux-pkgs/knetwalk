@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : knetwalk
-Version  : 18.12.3
-Release  : 4
-URL      : https://download.kde.org/stable/applications/18.12.3/src/knetwalk-18.12.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.3/src/knetwalk-18.12.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.3/src/knetwalk-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 19.04.0
+Release  : 5
+URL      : https://download.kde.org/stable/applications/19.04.0/src/knetwalk-19.04.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.0/src/knetwalk-19.04.0.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.0/src/knetwalk-19.04.0.tar.xz.sig
+Summary  : Connect all the terminals to the server, in as few turns as possible
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
 Requires: knetwalk-bin = %{version}-%{release}
@@ -68,23 +68,22 @@ locales components for the knetwalk package.
 
 
 %prep
-%setup -q -n knetwalk-18.12.3
+%setup -q -n knetwalk-19.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552003000
+export SOURCE_DATE_EPOCH=1555617065
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552003000
+export SOURCE_DATE_EPOCH=1555617065
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/knetwalk
 cp COPYING %{buildroot}/usr/share/package-licenses/knetwalk/COPYING
@@ -126,6 +125,7 @@ popd
 /usr/share/knetwalk/themes/electronic.desktop
 /usr/share/knetwalk/themes/electronic.svgz
 /usr/share/knetwalk/themes/electronic_preview.png
+/usr/share/metainfo/org.kde.knetwalk.appdata.xml
 
 %files doc
 %defattr(0644,root,root,0755)
