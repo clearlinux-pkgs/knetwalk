@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : knetwalk
-Version  : 22.04.1
-Release  : 39
-URL      : https://download.kde.org/stable/release-service/22.04.1/src/knetwalk-22.04.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.1/src/knetwalk-22.04.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.1/src/knetwalk-22.04.1.tar.xz.sig
+Version  : 22.04.2
+Release  : 40
+URL      : https://download.kde.org/stable/release-service/22.04.2/src/knetwalk-22.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.2/src/knetwalk-22.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.2/src/knetwalk-22.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -68,15 +68,15 @@ locales components for the knetwalk package.
 
 
 %prep
-%setup -q -n knetwalk-22.04.1
-cd %{_builddir}/knetwalk-22.04.1
+%setup -q -n knetwalk-22.04.2
+cd %{_builddir}/knetwalk-22.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652644823
+export SOURCE_DATE_EPOCH=1654832549
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -92,12 +92,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1652644823
+export SOURCE_DATE_EPOCH=1654832549
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/knetwalk
-cp %{_builddir}/knetwalk-22.04.1/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/knetwalk/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/knetwalk-22.04.1/COPYING %{buildroot}/usr/share/package-licenses/knetwalk/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/knetwalk-22.04.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/knetwalk/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/knetwalk-22.04.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/knetwalk/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/knetwalk-22.04.2/COPYING %{buildroot}/usr/share/package-licenses/knetwalk/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/knetwalk-22.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/knetwalk/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
@@ -169,6 +169,8 @@ popd
 /usr/share/doc/HTML/pt/knetwalk/index.docbook
 /usr/share/doc/HTML/pt_BR/knetwalk/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/knetwalk/index.docbook
+/usr/share/doc/HTML/ru/knetwalk/index.cache.bz2
+/usr/share/doc/HTML/ru/knetwalk/index.docbook
 /usr/share/doc/HTML/sv/knetwalk/index.cache.bz2
 /usr/share/doc/HTML/sv/knetwalk/index.docbook
 /usr/share/doc/HTML/uk/knetwalk/gameboard.png
