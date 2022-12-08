@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : knetwalk
-Version  : 22.08.3
-Release  : 45
-URL      : https://download.kde.org/stable/release-service/22.08.3/src/knetwalk-22.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.3/src/knetwalk-22.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.3/src/knetwalk-22.08.3.tar.xz.sig
+Version  : 22.12.0
+Release  : 46
+URL      : https://download.kde.org/stable/release-service/22.12.0/src/knetwalk-22.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.0/src/knetwalk-22.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.0/src/knetwalk-22.12.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -68,15 +68,15 @@ locales components for the knetwalk package.
 
 
 %prep
-%setup -q -n knetwalk-22.08.3
-cd %{_builddir}/knetwalk-22.08.3
+%setup -q -n knetwalk-22.12.0
+cd %{_builddir}/knetwalk-22.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667872847
+export SOURCE_DATE_EPOCH=1670525660
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -92,12 +92,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667872847
+export SOURCE_DATE_EPOCH=1670525660
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/knetwalk
 cp %{_builddir}/knetwalk-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/knetwalk/29fb05b49e12a380545499938c4879440bd8851e || :
-cp %{_builddir}/knetwalk-%{version}/COPYING %{buildroot}/usr/share/package-licenses/knetwalk/4cc77b90af91e615a64ae04893fdffa7939db84c || :
-cp %{_builddir}/knetwalk-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/knetwalk/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
+cp %{_builddir}/knetwalk-%{version}/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/knetwalk/7697008f58568e61e7598e796eafc2a997503fde || :
+cp %{_builddir}/knetwalk-%{version}/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/knetwalk/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
 pushd clr-build
 %make_install
 popd
@@ -119,6 +119,7 @@ popd
 /usr/share/icons/hicolor/32x32/apps/knetwalk.png
 /usr/share/icons/hicolor/48x48/apps/knetwalk.png
 /usr/share/icons/hicolor/64x64/apps/knetwalk.png
+/usr/share/icons/hicolor/scalable/apps/knetwalk.svgz
 /usr/share/knetwalk/qml/Cable.qml
 /usr/share/knetwalk/qml/CanvasItem.qml
 /usr/share/knetwalk/qml/Cell.qml
@@ -180,8 +181,8 @@ popd
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/knetwalk/29fb05b49e12a380545499938c4879440bd8851e
-/usr/share/package-licenses/knetwalk/4cc77b90af91e615a64ae04893fdffa7939db84c
-/usr/share/package-licenses/knetwalk/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+/usr/share/package-licenses/knetwalk/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+/usr/share/package-licenses/knetwalk/7697008f58568e61e7598e796eafc2a997503fde
 
 %files locales -f knetwalk.lang
 %defattr(-,root,root,-)
